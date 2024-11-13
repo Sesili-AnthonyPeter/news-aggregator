@@ -1,8 +1,20 @@
 {
-    "rewrites": [
+    "version": 2,
+    "buildCommand": "npm install --legacy-peer-deps && npm run build",
+    "builds": [
       {
-        "source": "/(.*)",
-        "destination": "/"
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "build"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
       }
     ]
-  } 
+  }
+  
