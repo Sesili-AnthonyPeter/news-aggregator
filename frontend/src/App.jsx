@@ -1,28 +1,17 @@
-/*=============================================================================
- | Purpose:  REACT ROUTER LOGIC FOR MAIN, XXXXX, XXXXX AND NOT FOUND PAGES
- |           IMPORT THE LAYOUT COMPONENT THAT IS WRAPPING NAVBAR AND SIDEBAR
- |           SO TO KEEP THEM CONSISTENT ACROSS ALL PAGES
- |
- | Input / Parameters:  NA
- |   
- | Output / Returns:  REACT ROUTER PATH TO EACH PAGE
- |
- *===========================================================================*/
-
-import React, { Suspense, useContext, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import React, { Suspense, useState } from "react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 const Main = React.lazy(() => import("./pages/Main"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 import Layout from "./components/Layout";
 import UserContext from "./context/user";
 import Feed from "./pages/Feed";
 
-
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [loggedUserId, setLoggedUserId] = useState("");
   const [smartCollection, setSmartCollection] = useState([]);
+  const navigate = useNavigate(); // useNavigate hook from react-router-dom
 
   return (
     <>
